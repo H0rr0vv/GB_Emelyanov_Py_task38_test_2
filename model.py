@@ -41,4 +41,8 @@ def change(index: int, new: dict[str, str]):                                    
 
 def del_contact(index: int):                           # Удаление контакта
     phone_book.pop(int(index) - 1)
+    uid = 1
+    for item in phone_book:
+        item['id'] = int(uid)
+        uid += 1
     return phone_book

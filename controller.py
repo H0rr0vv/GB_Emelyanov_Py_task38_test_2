@@ -38,7 +38,7 @@ def start():
                 show_contacts(result)
                 index = input_return(text.input_index_del)
                 old_name = model.phone_book[int(index) - 1].get('name')
-                model.del_contact(int(index)) 
+                model.del_contact(int(index))
                 print_message(text.contact_delete(old_name))
             case 8:
                 break
