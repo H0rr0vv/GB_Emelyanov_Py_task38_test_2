@@ -41,10 +41,16 @@ def input_return(message: str) -> str:              # Вывод сообщен�
 
 def prepare_to_save_file(phone_book: list[dict]) -> list:
     new = []
+    count = 0
     for item in phone_book:
-        new += item['id'], ':', item['name'], ':', item['phone'], ':', item['comment'], '/n'
-    replace_list = ["'", '[', ']', ' ', ',']
+        new += item['id'], ':', item['name'], ':', item['phone'], ':', item['comment']
+        if count < len(phone_book) - 1:
+            new += ' /n|'
+        count += 1
+    replace_list = ["'", '[', ']', ',', ' ']
     for char in replace_list:
-        new = str(new).replace(char, '')
+        for i in new:
+            new += i.replace(char, '')
+    new = new.split('|')
     print(new)
     return new
