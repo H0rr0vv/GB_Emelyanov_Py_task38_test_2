@@ -39,7 +39,7 @@ def change(index: int, new: dict[str, str]):                                    
              phone_book[index - 1][key] = field
 
 
-def del_contact(index: int):                           # Удаление контакта
+def del_contact(index: int):                                                # Удаление контакта
     phone_book.pop(int(index) - 1)
     uid = 1
     for item in phone_book:

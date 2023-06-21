@@ -27,7 +27,7 @@ def print_message(message: str):                    # Вывод сообщен�
     print(message)
     print('=' * length + '\n')
 
-def input_contact(message: str) -> dict[str, str]:          #      
+def input_contact(message: str) -> dict[str, str]:          # Присвоение данных?      
     print(message)
     name = input(new_contact[0])
     phone = input(new_contact[1])
