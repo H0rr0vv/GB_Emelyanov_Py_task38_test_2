@@ -1,4 +1,4 @@
-from view import menu, show_contacts, print_message, input_contact, input_return
+from view import menu, show_contacts, print_message, input_contact, input_return, prepare_to_save_file
 import model
 from view import text
 
@@ -12,7 +12,8 @@ def start():
                 model.open_file()
                 print_message(text.open_successful)
             case 2:
-                pass
+                new_list = prepare_to_save_file(model.phone_book)
+                model.save_file(new_list)
             case 3:
                 show_contacts(model.phone_book)                
             case 4:

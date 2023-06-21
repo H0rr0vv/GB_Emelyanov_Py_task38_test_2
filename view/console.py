@@ -37,3 +37,14 @@ def input_contact(message: str) -> dict[str, str]:          # Присвоени
 
 def input_return(message: str) -> str:              # Вывод сообщения
     return input(message)
+
+
+def prepare_to_save_file(phone_book: list[dict]) -> list:
+    new = []
+    for item in phone_book:
+        new += item['id'], ':', item['name'], ':', item['phone'], ':', item['comment'], '/n'
+    replace_list = ["'", '[', ']', ' ', ',']
+    for char in replace_list:
+        new = str(new).replace(char, '')
+    print(new)
+    return new

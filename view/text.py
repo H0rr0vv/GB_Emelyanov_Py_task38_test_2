@@ -34,3 +34,6 @@ def contact_change(name: str):
 
 def contact_delete(name: str):
     return f'Контакт {name} успешно удален'
+
+
+

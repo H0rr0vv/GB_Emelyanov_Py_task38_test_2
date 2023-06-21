@@ -46,3 +46,8 @@ def del_contact(index: int):                                                # У
         item['id'] = int(uid)
         uid += 1
     return phone_book
+
+
+def save_file(new: list):
+    with open(path, 'w', encoding = 'UTF-8') as file:
+        file.writelines(str(new))
