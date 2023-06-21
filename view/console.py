@@ -1,6 +1,6 @@
 from .text import *
 
-def menu () -> int:
+def menu () -> int:             # Выбор пункта меню
     print(main_menu)
     while True:
         choice = input(menu_choice)
@@ -8,7 +8,7 @@ def menu () -> int:
             return int(choice)
         print (input_error)
 
-def show_contacts(book: list[dict[str,str]]):
+def show_contacts(book: list[dict[str,str]]):           # Отображение контактов
     if book:
         print('\n' + '=' * 67)
         for contact in book:
@@ -21,13 +21,13 @@ def show_contacts(book: list[dict[str,str]]):
     else:
         print(book_error)
 
-def print_message(message: str):
+def print_message(message: str):                    # Вывод сообщения о статусе операции
     length = len(message)
     print('\n' + '=' * length)
     print(message)
     print('=' * length + '\n')
 
-def input_contact(message: str) -> dict[str, str]:
+def input_contact(message: str) -> dict[str, str]:          #      
     print(message)
     name = input(new_contact[0])
     phone = input(new_contact[1])
@@ -35,5 +35,5 @@ def input_contact(message: str) -> dict[str, str]:
     return {'name': name, 'phone': phone, 'comment': comment}
 
 
-def input_return(message: str) -> str:
+def input_return(message: str) -> str:              # Вывод сообщения
     return input(message)

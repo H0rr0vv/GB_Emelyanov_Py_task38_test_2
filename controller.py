@@ -33,6 +33,12 @@ def start():
                 old_name = model.phone_book[int(index) - 1].get('name')
                 print_message(text.contact_change(new.get('name') if new.get('name') else old_name))
             case 7:
-                pass
+                word = input_return(text.search_word)
+                result = model.search(word)
+                show_contacts(result)
+                index = input_return(text.input_index_del)
+                old_name = model.phone_book[int(index) - 1].get('name')
+                model.del_contact(int(index)) 
+                print_message(text.contact_delete(old_name))
             case 8:
                 break
