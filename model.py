@@ -55,8 +55,7 @@ class PhoneBook:
             if index == contact.uid:
                 contact.name = new.get('name') if not new.get('name') else contact.name
                 contact.phone = new.get('phone') if not new.get('phone') else contact.phone
-                contact.comment = new.get('comment') if not new.get('comment')else contact.comment
-
+                contact.comment = new.get('comment') if not new.get('comment') else contact.comment
 
 
     def del_contact(self, index: int):                                                # Удаление контакта

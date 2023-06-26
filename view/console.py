@@ -44,7 +44,7 @@ def prepare_to_save_file(book: PhoneBook):   # Преобразование ли
     for contact in book.contacts:
         new += contact.uid, ':', contact.name, ':', contact.phone, ':', contact.comment
         if count < len(book.contacts) - 1:
-            new += '\n|'
+            new += '\n'
         count += 1
     i = 0
     while i < len(new):

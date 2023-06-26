@@ -30,19 +30,19 @@ def start():
             case 6:
                 word = input_return(text.search_word)
                 result = pb.search(word)
-                show_contacts(result)
+                show_contacts(pb)
                 index = input_return(text.input_index)
                 new = input_contact(text.input_change_contact)
                 pb.change(int(index), new)
-                old_name = pb[int(index) - 1].get('name')
+                old_name = pb.contacts.name(index)
                 print_message(text.contact_change(new.get('name') if new.get('name') else old_name))
                 flag = False
             case 7:
                 word = input_return(text.search_word)
                 result = pb.search(word)
-                show_contacts(result)
+                show_contacts(pb)
                 index = input_return(text.input_index_del)
-                old_name = pb[int(index) - 1].get('name')
+                old_name = index
                 pb.del_contact(int(index))
                 print_message(text.contact_delete(old_name))
                 flag = False
