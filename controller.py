@@ -14,12 +14,14 @@ def start():
             case 2:
                 new_list = prepare_to_save_file(model.phone_book)
                 model.save_file(new_list)
+                flag = True
             case 3:
                 show_contacts(model.phone_book)                
             case 4:
                 new = input_contact(text.input_new_contact)
                 model.add_contact(new)
                 print_message(text.contact_saved(new.get('name')))
+                flag = False
             case 5:
                 word = input_return(text.search_word)
                 result = model.search(word)
@@ -33,6 +35,7 @@ def start():
                 model.change(int(index), new)
                 old_name = model.phone_book[int(index) - 1].get('name')
                 print_message(text.contact_change(new.get('name') if new.get('name') else old_name))
+                flag = False
             case 7:
                 word = input_return(text.search_word)
                 result = model.search(word)
@@ -41,5 +44,17 @@ def start():
                 old_name = model.phone_book[int(index) - 1].get('name')
                 model.del_contact(int(index))
                 print_message(text.contact_delete(old_name))
+                flag = False
             case 8:
-                break
+                if flag == False:
+                    exit_quesion = input(print(text.save_reminder))
+                    if exit_quesion == 'Y' or 'y':
+                        break
+                    else:
+                        new_list = prepare_to_save_file(model.phone_book)
+                        model.save_file(new_list)
+                        break
+                else:
+                    break
+                    
+                
