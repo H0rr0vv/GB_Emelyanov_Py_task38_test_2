@@ -12,6 +12,7 @@ class Contact:
     def __str__(self) -> str:                                                               # Вызывается по принт
         return f'{self.uid:>3}. {self.name:<20} {self.phone:<20} {self.comment:<20}'
     
+    
     def for_search(self):
         return f'{self.name} {self.phone} {self.comment}'.lower()
 
@@ -71,3 +72,10 @@ class PhoneBook:
             with open(self.path, 'w', encoding = 'UTF-8') as file:
                 for contact in new:
                     file.write(contact + '\n')
+                    
+    def get_name(self, uid):
+        old_name = str
+        for contact in self.contacts:
+            if contact.uid == uid:
+                old_name = contact.name
+                return old_name

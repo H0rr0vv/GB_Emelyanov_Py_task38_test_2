@@ -34,7 +34,7 @@ def start():
                 index = input_return(text.input_index)
                 new = input_contact(text.input_change_contact)
                 pb.change(int(index), new)
-                old_name = pb.contacts.name(index)
+                old_name = pb.get_name(int(index))
                 print_message(text.contact_change(new.get('name') if new.get('name') else old_name))
                 flag = False
             case 7:
@@ -42,7 +42,7 @@ def start():
                 result = pb.search(word)
                 show_contacts(pb)
                 index = input_return(text.input_index_del)
-                old_name = index
+                old_name = pb.get_name(int(index))
                 pb.del_contact(int(index))
                 print_message(text.contact_delete(old_name))
                 flag = False
