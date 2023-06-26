@@ -39,18 +39,14 @@ def input_return(message: str) -> str:              # Вывод сообщен�
     return input(message)
 
 
-def prepare_to_save_file(phone_book: list[dict]) -> list:
+def prepare_to_save_file(phone_book: list[dict]) -> list:   # Преобразование листа справочника к формату для записи в текстовый файл
     new = []
     count = 0
     for item in phone_book:
         new += item['id'], ':', item['name'], ':', item['phone'], ':', item['comment']
         if count < len(phone_book) - 1:
-            new += ' /n|'
+            new += '|'
         count += 1
-    replace_list = ["'", '[', ']', ',', ' ']
-    for char in replace_list:
-        for i in new:
-            new += i.replace(char, '')
-    new = new.split('|')
-    print(new)
+    new = [''.join(new)]
+    new:list = new[0].split('|')
     return new

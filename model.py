@@ -50,4 +50,5 @@ def del_contact(index: int):                                                # У
 
 def save_file(new: list):
     with open(path, 'w', encoding = 'UTF-8') as file:
-        file.writelines(new)
+        for contact in new:
+            file.write(contact + '\n')
