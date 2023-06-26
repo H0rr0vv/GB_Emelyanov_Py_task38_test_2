@@ -1,4 +1,6 @@
 from .text import *
+from model import PhoneBook, Contact
+
 
 def menu () -> int:             # Выбор пункта меню
     print(main_menu)
@@ -8,18 +10,16 @@ def menu () -> int:             # Выбор пункта меню
             return int(choice)
         print (input_error)
 
-def show_contacts(book: list[dict[str,str]]):           # Отображение контактов
-    if book:
+
+def show_contacts(book: PhoneBook):           # Отображение контактов
+    if book.contacts:
         print('\n' + '=' * 67)
-        for contact in book:
-            uid = contact.get('id')
-            name = contact.get('name')
-            phone = contact.get('phone')
-            comment = contact.get('comment')
-            print(f'{uid:>3}. {name:<20} {phone:<20} {comment:<20}')
+        for contact in book.contacts:
+            print(contact)
         print('=' * 67 + '\n')
     else:
         print(book_error)
+
 
 def print_message(message: str):                    # Вывод сообщения о статусе операции
     length = len(message)
@@ -27,25 +27,24 @@ def print_message(message: str):                    # Вывод сообщен�
     print(message)
     print('=' * length + '\n')
 
+
 def input_contact(message: str) -> dict[str, str]:          # Присвоение данных?      
     print(message)
-    name = input(new_contact[0])
-    phone = input(new_contact[1])
-    comment = input(new_contact[2])
-    return {'name': name, 'phone': phone, 'comment': comment}
+    new = Contact(input(new_contact[0]), input(new_contact[1]), input(new_contact[2]))
+    return new
 
 
 def input_return(message: str) -> str:              # Вывод сообщения
     return input(message)
 
 
-def prepare_to_save_file(phone_book: list[dict]):   # Преобразование листа справочника к формату для записи в текстовый файл
+def prepare_to_save_file(book: PhoneBook):   # Преобразование листа справочника к формату для записи в текстовый файл
     new = []
     count = 0
-    for item in phone_book:
-        new += item['id'], ':', item['name'], ':', item['phone'], ':', item['comment']
-        if count < len(phone_book) - 1:
-            new += ' /n|'
+    for contact in book.contacts:
+        new += contact.uid, ':', contact.name, ':', contact.phone, ':', contact.comment
+        if count < len(book.contacts) - 1:
+            new += '\n|'
         count += 1
     i = 0
     while i < len(new):
