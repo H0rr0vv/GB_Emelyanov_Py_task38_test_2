@@ -4,19 +4,19 @@ phone_book = [{'id':1, 'name':'Емельянов Богдан', 'phone':'891415
 
 
 def prepare_to_save_file(phone_book: list[dict]):   # Преобразование листа справочника к формату для записи в текстовый файл
-    new = []
+    new_list = []
     count = 0
     for item in phone_book:
-        new += item['id'], ':', item['name'], ':', item['phone'], ':', item['comment']
+        new_list += item['id'], ':', item['name'], ':', item['phone'], ':', item['comment']
         if count < len(phone_book) - 1:
-            new += ' /n|'
+            new_list += ' /n|'
         count += 1
     i = 0
     while i < len(new):
-        new[i] = str(new[i])
+        new_list[i] = str(new_list[i])
         i += 1
-    new = [''.join(new)]
-    return new
+    new_list = [''.join(new_list)]
+    return new_list
 
 
 print(prepare_to_save_file(phone_book))
